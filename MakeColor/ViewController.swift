@@ -15,11 +15,20 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         let mk = MakeColor();
-        self.view.backgroundColor = mk.makeColor("FF0000");
+        // SOLID COLOR
+        // self.view.backgroundColor = mk.makeColor("FF0000");
         
-        let gradient = mk.makeGradient("FF0000", color2: "0000FF")
-        gradient.frame = view.bounds;
-        self.view.layer.insertSublayer(gradient, atIndex: 0)
+        // VERTICAL GRADIENT
+        // let gradient = mk.makeGradient("FF0000", color2: "0000FF")
+        // gradient.frame = view.bounds;
+        // self.view.layer.insertSublayer(gradient, atIndex: 0)
+        
+        // HOIZONTAL GRADIENT
+        let startPoint = CGPoint(x: 0, y: 0.8);
+        let endPoint = CGPoint(x: 1, y: 0.2)
+        let gradient2 = mk.makeGradient("FF00000", color2: "0000FF", startPoint: startPoint, endPoint: endPoint)
+        gradient2.frame = view.bounds;
+        self.view.layer.insertSublayer(gradient2, atIndex: 0)
     }
 
     override func didReceiveMemoryWarning() {
