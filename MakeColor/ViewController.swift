@@ -38,12 +38,17 @@ class ViewController: UIViewController
         
         //let mk = MakeColor();
         // SOLID COLOR
-        // self.view.backgroundColor = mk.makeColor("FF0000");
+        var color = mk.makeColor("FF5E3A")// mk.makeOpac(, alpha: 0.8);
         
-        // VERTICAL GRADIENT
-        // let gradient = mk.makeGradient("FF0000", color2: "0000FF")
-        // gradient.frame = view.bounds;
-        // self.view.layer.insertSublayer(gradient, atIndex: 0)
+        color = mk.makeLighter(color, percent: 30)
+        // color = mk.makeDarker(color, percent: 20)
+        self.view.backgroundColor = color;
+
+        
+         // VERTICAL GRADIENT
+         let gradient = mk.makeVerticalGradient("FF9500", color2: "FF5E3A")
+         gradient.frame = view.bounds;
+         self.view.layer.insertSublayer(gradient, atIndex: 0)
         
         // HOIZONTAL GRADIENT
         //let startPoint = CGPoint(x: 0, y: 0.8);
@@ -58,6 +63,7 @@ class ViewController: UIViewController
         // Dispose of any resources that can be recreated.
     }
 
-
 }
+
+
 

@@ -75,13 +75,13 @@ public class MakeColor {
         let topColor = makeColor(color1);
         let bottomColor = makeColor(color2);
         
-        let gradientColors: Array <AnyObject> = [topColor.CGColor, bottomColor.CGColor]
+        let gradientColors: Array <CGColorRef> = [topColor.CGColor, bottomColor.CGColor]
         // let gradientLocations: Array <NSNumber> = [location1, location2]
         
         
         
         let gradientLayer: CAGradientLayer = CAGradientLayer()
-        gradientLayer.colors = gradientColors
+        gradientLayer.colors = gradientColors;
         gradientLayer.startPoint = startPoint;
         gradientLayer.endPoint = endPoint;  // CGPointMake(1, 0.5);
         // gradientLayer.locations = gradientLocations
@@ -89,7 +89,72 @@ public class MakeColor {
         return gradientLayer
     }
     
+    public func makeGradientOpac(gradient:CAGradientLayer,alpha:CGFloat) ->CAGradientLayer {
+        gradient.allowsGroupOpacity = true; //.colorWithAlphaComponent(alpha);
+        let gColors = gradient.colors! as! Array <CGColorRef>;
+        
+        for(var i = 0; i < gColors.count; i++ ) {
+            print(gColors[i]);
+//            for(var j = 0; j < colors[i].colors!!.count; j++) {
+//                colors[i].colors
+//            }
+        }
+        return gradient;
+    }
     
+    public func makeOpac(var color:UIColor,alpha:CGFloat) ->UIColor {
+        color = color.colorWithAlphaComponent(alpha);
+        return color;
+    }
     
+    //
+    public func makeDarker(color :UIColor, percent:CGFloat) ->UIColor {
+        let float = percent/100;
+        let ciColor = color.coreImageColor!
+        var red = ciColor.red
+        if(red != 0 ) {
+            red = ciColor.red - float;
+        }
+        var green = ciColor.green
+        if(green != 0 ) {
+            green = ciColor.green - float;
+        }
+        var blue = ciColor.blue
+        if(blue != 0 ) {
+            blue = ciColor.blue - float;
+        }
+        let alpha = ciColor.alpha
+        
+        let darkerColor = UIColor(red: red, green: green, blue:blue , alpha: alpha)
+        return darkerColor;
+        
+    }
     
+    public func makeLighter(color :UIColor, percent:CGFloat)-> UIColor {
+        let float = percent/100;
+        let ciColor = color.coreImageColor!
+        var red = ciColor.red
+        if(red != 1.0 ) {
+            red = ciColor.red + float;
+        }
+        var green = ciColor.green
+        if(green != 1.0 ) {
+            green = ciColor.green + float;
+        }
+        var blue = ciColor.blue
+        if(blue != 1.0 ) {
+            blue = ciColor.blue + float;
+        }
+        let alpha = ciColor.alpha
+        
+        let darkerColor = UIColor(red: red , green: green, blue:blue , alpha: alpha)
+        return darkerColor;
+    }
+}
+
+// to get components RGB components out of a UIColor
+extension UIColor {
+    var coreImageColor: CoreImage.CIColor? {
+        return CoreImage.CIColor(color: self)  // The resulting Core Image color, or nil
+    }
 }
