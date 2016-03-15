@@ -16,6 +16,10 @@ class ViewController: UIViewController {
         
         let mk = MakeColor();
         self.view.backgroundColor = mk.makeColor("FF0000");
+        
+        let gradient = mk.makeGradient("FF0000", color2: "0000FF")
+        gradient.frame = view.bounds;
+        self.view.layer.insertSublayer(gradient, atIndex: 0)
     }
 
     override func didReceiveMemoryWarning() {

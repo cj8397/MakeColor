@@ -13,6 +13,7 @@ public class MakeColor {
     init() {
         
     }
+    
     /* http://www.developerdave.co.uk/2014/10/gradient-backgrounds-swift/ */
     public func makeGradient(color1:String, color2:String) -> CAGradientLayer {
         let topColor = makeColor(color1);
