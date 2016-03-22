@@ -14,7 +14,6 @@ class ViewController: UIViewController
     @IBOutlet weak var colorSquare: UIView!
     @IBOutlet weak var colorOne: UITextField!
     @IBOutlet weak var colorTwo: UITextField!
-    @IBOutlet weak var blueColor: UIView!
     
     @IBAction func mkColorBtn(sender: AnyObject)
     {
@@ -24,12 +23,14 @@ class ViewController: UIViewController
         let gradient = mk.makeVerticalGradient(colorone!, bottomColor: colortwo!)
         gradient.frame = view.bounds;
         self.view.layer.insertSublayer(gradient, atIndex: 0)
-        self.blueColor.hidden = true;
     }
     
-    @IBAction func clearBtn(sender: AnyObject)
+    @IBAction func mkGradientBtn(sender: AnyObject)
     {
-        self.view.layer.removeFromSuperlayer();
+        
+        let mk = MakeColor();
+        let color = mk.makeColor(colorOne.text!);
+        self.view.backgroundColor = color;
     }
     
     override func viewDidLoad() {
@@ -38,11 +39,11 @@ class ViewController: UIViewController
         
         //let mk = MakeColor();
         // SOLID COLOR
-        var color = mk.makeColor("FF5E3A")// mk.makeOpac(, alpha: 0.8);
+        //var color = mk.makeColor("FF5E3A")// mk.makeOpac(, alpha: 0.8);
         
-        color = mk.makeLighter(color, percent: 30)
+        //color = mk.makeLighter(color, percent: 30)
         // color = mk.makeDarker(color, percent: 20)
-        self.view.backgroundColor = color;
+        //self.view.backgroundColor = color;
 
         
         
