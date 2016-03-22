@@ -20,7 +20,7 @@ class ViewController: UIViewController
         //colorSquare.backgroundColor = mk.makeColor("0000ff");
         let colorone = colorOne.text;
         let colortwo = colorTwo.text;
-        let gradient = mk.makeVerticalGradient(colorone!, color2: colortwo!)
+        let gradient = mk.makeVerticalGradient(colorone!, bottomColor: colortwo!)
         gradient.frame = view.bounds;
         self.view.layer.insertSublayer(gradient, atIndex: 0)
     }
