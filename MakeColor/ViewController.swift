@@ -45,9 +45,11 @@ class ViewController: UIViewController
         self.view.backgroundColor = color;
 
         
+        
          // VERTICAL GRADIENT
-         let gradient = mk.makeVerticalGradient("FF9500", bottomColor: "FF5E3A")
+        let gradient = mk.makeGradient("FF5E3A", color2: "FFFFFF", startPoint: CGPointMake(0, 0), endPoint: CGPointMake(1, 1))
          gradient.frame = view.bounds;
+
          self.view.layer.insertSublayer(gradient, atIndex: 0)
         
         // HOIZONTAL GRADIENT
